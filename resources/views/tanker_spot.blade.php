@@ -53,33 +53,45 @@
     }
 
     /* special header colors (matching image) */
-    .col-util {
-        background: #196837 !important;
+    .util {
+        /* background: #196837 !important; */
+        background: #873e23 !important;
+        font-weight: 600;
     }
 
     /* green-ish */
-    .col-comm {
+    .comm {
         background: #a33b00 !important;
     }
 
     /* orange-ish */
-    .col-usage {
-        background: #7c3aed !important;
+    .usage {
+        background: #873e23 !important;
     }
 
     /* purple-ish */
-    .col-plan {
-        background: #7c2d12 !important;
+    .plan {
+        background: #351368 !important;
     }
 
     /* dark orange */
-    .col-fact {
-        background: #5b21b6 !important;
+    .fact {
+        background: #351368 !important;
     }
 
     /* deep purple */
-    .col-diff {
-        background: #4c1d95 !important;
+    .diff {
+        background: #351368 !important;
+    }
+
+    .offhire {
+        background: rgb(24, 90, 24) !important;
+        font-weight: 600;
+    }
+
+    .worked {
+        background: rgb(24, 90, 24) !important;
+        font-weight: 600;
     }
 
     /* diff purple */
@@ -112,6 +124,63 @@
         font-weight: 700;
         font-size: 1.06rem;
     }
+
+    /* new  */
+
+    .tankerSpotTable th {
+        padding: 4px 4px;
+        /* DAR */
+        font-size: 12px;
+        /* balaca */
+        line-height: 1.1;
+        white-space: normal;
+        /* <br> işləsin */
+        text-align: center;
+    }
+
+    .tankerSpotTable {
+        table-layout: fixed !important;
+        width: 100% !important;
+        min-width: unset !important;
+    }
+
+    .tankerSpotTable th,
+    .tankerSpotTable td {
+        padding: 4px 3px !important;
+        font-size: 12px;
+        line-height: 1.1;
+        white-space: normal !important;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table {
+        min-width: 0 !important;
+    }
+
+    .tankerSpotModalHead {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .tankerSpotModalHead .btn-close {
+        position: absolute;
+        right: 1rem;
+        top: 10px;
+    }
+
+    .tankerSpotTable tfoot td {
+        background: #111827;
+        font-weight: bold;
+        text-align: center !important;
+        color: white;
+    }
 </style>
 
 {{-- <div class="d-flex justify-content-center">
@@ -125,15 +194,18 @@
     <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
 
-            <div class="modal-header">
-                <h5 class="modal-title">Spotda işləyən Tankerlərin kommersiya göstəriciləri</h5>
+            <div class="modal-header tankerSpotModalHead">
+                <h5 class="modal-title"></h5>
+                <h3 class="fw-bold">
+                    Spotda işləyən Tankerlərin kommersiya göstəriciləri
+                </h3>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                     aria-label="Bağla"></button>
             </div>
 
             <div class="modal-body pt-0">
                 <div class="table-responsive">
-                    <table class="table table-bordered align-middle mb-0">
+                    <table class="table table-bordered align-middle mb-0 tankerSpotTable fw-bold">
                         <thead>
                             <tr>
                                 <th style="min-width:48px">No</th>
@@ -145,13 +217,13 @@
                                 <th>Daxili<br>təminat, gün</th>
                                 <th>İş<br>gözləmə, gün</th>
                                 <th>Hava<br>şəraiti, gün</th>
-                                <th>Texniki<br>işlənməmış, gün</th>
-                                <th>Cəmi işlənmiş,<br>gün</th>
-                                <th class="col-util">Kommersiya<br>utilizasiyası</th>
-                                <th class="col-usage">İstismar<br>utilizasiyası</th>
-                                <th class="col-plan">Bazar TC<br>qiyməti, $</th>
-                                <th class="col-fact">TC ekvivalenti, $</th>
-                                <th class="col-diff">Fərq, $</th>
+                                <th class="offhire">Texniki<br>işlənməmış, gün</th>
+                                <th class="worked">Cəmi işlənmiş,<br>gün</th>
+                                <th class="util">Kommersiya<br>utilizasiyası</th>
+                                <th class="usage">İstismar<br>utilizasiyası</th>
+                                <th class="plan">Bazar TC<br>qiyməti, $</th>
+                                <th class="fact">TC ekvivalenti, $</th>
+                                <th class="diff">Fərq, $</th>
                             </tr>
                         </thead>
 

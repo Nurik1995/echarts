@@ -386,11 +386,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
+    <script src="https://echarts.apache.org/en/js/vendors/echarts/dist/echarts.min.js"></script>
 
     @include('tanker_taymcarter')
     @include('tanker_spot')
 
     @include('tanker_kommersiya')
+    @include('bere_kommersiya')
     {{-- @include('bar') --}}
 
 
@@ -469,6 +471,23 @@
             background-color: #36454F;
             color: white;
         }
+
+        .shipTable td:first-child {
+            text-align: left !important;
+            padding-left: 0.75rem;
+            /* istəsən 0 da edə bilərsən */
+        }
+
+        .shipTable td:first-child {
+            text-align: left;
+            padding-left: 0.75rem;
+        }
+
+        .shipTable td {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            line-height: 0.1;
+        }
     </style>
 </head>
 
@@ -502,6 +521,13 @@
                                         <div class="progress" style="border-radius: 2px">
                                             <div class="progress-bar" style="width:71%">71%</div>
                                         </div>
+
+                                        {{-- <div class="progress custom-progress">
+                                            <div class="progress-bar" role="progressbar" style="width:71%;"
+                                                aria-valuenow="71" aria-valuemin="0" aria-valuemax="100">
+                                                71%
+                                            </div>
+                                        </div> --}}
                                     </div>
                                 </td>
                             </tr>
@@ -646,7 +672,7 @@
 
             {{-- bere --}}
 
-            <div class="col-md-3">
+            <div class="col-md-3" data-bs-toggle="modal" data-bs-target="#bere_kommersiya">
                 <div class="card p-3 mb-2 pt-1" style="background-color: #36454F;">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
@@ -803,6 +829,6 @@
     </div>
 
     {{-- <script src="https://echarts.apache.org/en/js/vendors/echarts/dist/echarts.min.js"></script> --}}
-        </body>
+</body>
 
-        </html>
+</html>

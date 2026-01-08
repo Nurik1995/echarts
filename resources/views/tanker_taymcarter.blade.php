@@ -9,16 +9,17 @@
          border-radius: 18px;
      }
 
-     .table thead th {
+     .tankerTimeCharterTable thead th {
          background: #1f4f82;
          color: #fff;
          text-align: center;
          vertical-align: middle;
          font-size: 14px;
-         white-space: nowrap;
+         /* white-space: nowrap; */
+         /* table-layout: fixed; */
      }
 
-     .table tbody td {
+     .tankerTimeCharterTable tbody td {
          background: #0f253d;
          color: #fff;
          text-align: center;
@@ -26,31 +27,99 @@
          white-space: nowrap;
      }
 
-     .table tbody tr:hover td {
+     .tankerTimeCharterTable tbody tr:hover td {
          background: #14345a;
      }
 
+     .offhire {
+         background: rgb(24, 90, 24) !important;
+         font-weight: 600;
+     }
+
+     .worked {
+         background: rgb(24, 90, 24) !important;
+         font-weight: 600;
+     }
+
      .util {
-         background: #7c3aed !important;
+         background: #873e23 !important;
          font-weight: 600;
      }
 
      .plan {
-         background: #92400e !important;
+         background: #351368 !important;
      }
 
      .fact {
-         background: #6d28d9 !important;
+         background: #351368 !important;
      }
 
      .diff {
-         background: #4c1d95 !important;
+         background: #351368 !important;
      }
 
-     .table tfoot td {
+     .tankerTimeCharterTable tfoot td {
          background: #111827;
          font-weight: bold;
          text-align: center;
+         color: white;
+     }
+
+     /* .text-white td {
+         color: white;
+     } */
+
+     /* . {
+         table-layout: fixed;
+         width: 100%;
+     } */
+
+     .tankerTimeCharterTable th {
+         padding: 4px 4px;
+         /* DAR */
+         font-size: 12px;
+         /* balaca */
+         line-height: 1.1;
+         white-space: normal;
+         /* <br> işləsin */
+         text-align: center;
+     }
+
+     .tankerTimeCharterTable {
+         table-layout: fixed !important;
+         width: 100% !important;
+         min-width: unset !important;
+     }
+
+     .tankerTimeCharterTable th,
+     .tankerTimeCharterTable td {
+         padding: 4px 3px !important;
+         font-size: 12px;
+         line-height: 1.1;
+         white-space: normal !important;
+         word-break: break-word;
+         overflow-wrap: break-word;
+     }
+
+     .table-responsive {
+         overflow-x: auto;
+     }
+
+     .table {
+         min-width: 0 !important;
+     }
+
+     .tankerTimeCharterModalHead {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         position: relative;
+     }
+
+     .tankerTimeCharterModalHead .btn-close {
+         position: absolute;
+         right: 1rem;
+         top: 10px;
      }
  </style>
  </head>
@@ -64,17 +133,26 @@
          <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
              <div class="modal-content">
 
-                 <div class="modal-header border-0">
-                     <h5 class="modal-title fw-bold">
+                 {{-- <div class="tankerTimeCharterModalHead ">
+                     <h3 class="fw-bold">
                          Taym-Çarterdə işləyən Tankerlərin kommersiya göstəriciləri
-                     </h5>
+                     </h3>
                      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                 </div> --}}
+
+                 <div class="modal-header tankerTimeCharterModalHead">
+                     <h5 class="modal-title"></h5>
+                     <h3 class="fw-bold">
+                         Taym-Çarterdə işləyən Tankerlərin kommersiya göstəriciləri
+                     </h3>
+                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                         aria-label="Bağla"></button>
                  </div>
 
                  <div class="modal-body">
 
                      <div class="table-responsive">
-                         <table class="table table-bordered align-middle mb-0">
+                         <table class="table table-bordered fw-bold align-middle mb-0 tankerTimeCharterTable">
 
                              <thead>
                                  <tr>
@@ -84,12 +162,12 @@
                                      <th>Təqvim,<br>gün</th>
                                      <th>Təmir,<br>gün</th>
                                      <th>Ehtiyat,<br>gün</th>
-                                     <th>Daxili<br>təminat</th>
-                                     <th>İş<br>gözləmə</th>
-                                     <th>Hava<br>şəraiti</th>
-                                     <th>Cəmi<br>off-hire</th>
-                                     <th>Cəmi işlənmiş<br>gün</th>
-                                     <th class="util">Kommersiya<br>util.</th>
+                                     <th>Daxili<br>təminat,<br>gün</th>
+                                     <th>İş<br>gözləmə,<br>gün</th>
+                                     <th>Hava<br>şəraiti,<br>gün</th>
+                                     <th class="offhire" style="background-color: green">Cəmi<br>off-hire,<br>gün</th>
+                                     <th class="worked" style="background-color: green">Cəmi işlənmiş<br>gün</th>
+                                     <th class="util">Kommersiya<br>utilizasiyası</th>
                                      <th class="plan">Plan üzrə<br>gəlir $</th>
                                      <th class="fact">Faktiki<br>gəlir $</th>
                                      <th class="diff">Fərq $</th>
@@ -153,7 +231,7 @@
                                  <!-- digər sətirlər eyni qaydada -->
                              </tbody>
 
-                             <tfoot>
+                             <tfoot class="text-white">
                                  <tr>
                                      <td colspan="3">Cəmi</td>
                                      <td>91</td>

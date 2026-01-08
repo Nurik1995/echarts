@@ -119,7 +119,7 @@
         background: transparent;
         color: #fff;
         display: flex;
-        justify-content: space-between;
+        /* justify-content: space-between; */
         border: none;
         padding-left: 0;
     }
@@ -128,12 +128,49 @@
         background: #2b3440;
         border-radius: 12px;
         |padding: 16px;
+        /* height: 500px; */
     }
 
     .chart-div {
         width: 100% !important;
         height: 200px;
         min-width: 300px !important;
+    }
+
+    .modal-body span {
+        font-weight: bold;
+    }
+
+    @media (min-width: 992px) {
+        .divider-col {
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .divider-col {
+            border-start: none !important;
+            padding-left: 0 !important;
+        }
+    }
+
+    .divider-col {
+        border-left-style: dashed;
+        /* optional */
+    }
+
+    @media (min-width: 992px) {
+        .chart-col {
+            border-left: 2px solid rgb(255, 255, 255);
+            padding-left: 1.25rem;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .chart-col {
+            border-left: none;
+            padding-left: 0;
+        }
     }
 </style>
 
@@ -231,7 +268,7 @@
 <!-- MODAL -->
 
 <div class="modal fade" id="tanker_kommersiya" tabindex="-1">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content dashboard-modal">
 
             <!-- MODAL HEADER -->
@@ -255,17 +292,65 @@
 
                             <div class="col-12 col-lg-5">
                                 <h6 class="section-title mb-3">Əsas istismar indikatorları</h6>
+                                {{-- <ul class="list-group list-group-flush indicator-list">
+                                    <li class="list-group-item"><img src="/images/calendar.png"
+                                            style="width: 20px;height: 25px;" alt="Cinque Terre">Cəmi təqvim
+                                        günləri<span>390</span></li>
+                                    <li class="list-group-item"><img src="/images/offhire.png"
+                                            style="width: 20px;height: 25px;" alt="Cinque Terre">Cəmi off-hire
+                                        günləri<span>104</span></li>
+                                    <li class="list-group-item"><img src="/images/calendar.png"
+                                            style="width: 20px;height: 25px;" alt="Cinque Terre">Cəmi işlənmiş
+                                        günlər<span>286</span></li>
+                                    <li class="list-group-item"><img src="/images/commercial.png"
+                                            style="width: 20px;height: 25px;" alt="Cinque Terre">Kommersiya
+                                        Utilizasiyası<span>71%</span></li>
+                                </ul> --}}
+
                                 <ul class="list-group list-group-flush indicator-list">
-                                    <li class="list-group-item">📅 Təqvim günləri <span>390</span></li>
-                                    <li class="list-group-item">❌ Off-hire <span>104</span></li>
-                                    <li class="list-group-item">⚙️ İşlənmiş <span>286</span></li>
-                                    <li class="list-group-item">📈 Utilizasiya <span>71%</span></li>
+                                    <li class="list-group-item d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="/images/calendar.png" width="20" height="20"
+                                                alt="">
+                                            <span>Cəmi təqvim günləri:</span>
+                                        </div>
+                                        <span class="fw-semibold">390</span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="/images/offhire.png" width="20" height="20" alt="">
+                                            <span>Cəmi off-hire günləri:</span>
+                                        </div>
+                                        <span class="fw-semibold">104</span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="/images/calendar.png" width="20" height="20"
+                                                alt="">
+                                            <span>Cəmi işlənmiş günlər:</span>
+                                        </div>
+                                        <span class="fw-semibold">286</span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="/images/commercial.png" width="20" height="20"
+                                                alt="">
+                                            <span>Kommersiya Utilizasiyası:</span>
+                                        </div>
+                                        <span class="fw-semibold">71%</span>
+                                    </li>
                                 </ul>
+
+
                             </div>
 
-                            <div class="col-lg-7">
-                                <h6 class="section-title mb-3">Gəlirlilik göstəriciləri</h6>
-                                <div id="chart-container2" class="chart-div chart-box"></div>
+                            <div class="col-lg-7 col-12 chart-col">
+                                <h6 class="section-title mb-3"><img src="/images/commercial.png" width="20"
+                                        height="20" alt=""> Gəlirlilik göstəriciləri</h6>
+                                <div id="tankerTimeCharter" class="chart-div chart-box"></div>
 
                             </div>
 
@@ -283,22 +368,104 @@
 
                             <div class="col-12 col-lg-5">
                                 <h6 class="section-title mb-3">Əsas istismar indikatorları</h6>
+                                {{-- <ul class="list-group list-group-flush indicator-list">
+                                    <li class="list-group-item"><img src="/images/calendar.png"
+                                            style="width: 20px;height: 25px;" alt="Cinque Terre">Cəmi təqvim
+                                        günləri<span>150</span></li>
+                                    <li class="list-group-item"><img src="/images/offhire.png"
+                                            style="width: 20px;height: 25px;" alt="Cinque Terre">Cəmi təmir
+                                        günləri<span>40</span></li>
+                                    <li class="list-group-item"><img src="/images/calendar.png"
+                                            style="width: 20px;height: 25px;" alt="Cinque Terre">Cəmi boş dayanma
+                                        günləri<span>20</span></li>
+                                    <li class="list-group-item"><img src="/images/commercial.png"
+                                            style="width: 20px;height: 25px;" alt="Cinque Terre">Kommersiya
+                                        Utilizasiyası<span>50%</span></li>
+                                    <li class="list-group-item"><img src="/images/commercial.png"
+                                            style="width: 20px;height: 25px;" alt="Cinque Terre">İstismar
+                                        Utilizasiyası<span>57%</span></li>
+                                    <li class="list-group-item"><img src="/images/time.png"
+                                            style="width: 20px;height: 25px;" alt="Cinque Terre">Limanda gözləmə
+                                        vaxtı<span>220 saat</span></li>
+                                    <li class="list-group-item"><img src="/images/demurrage.png"
+                                            style="width: 20px;height: 25px;" alt="Cinque Terre">Cəmi demerec
+                                        məbləği<span>$360,000</span></li>
+                                </ul> --}}
+
                                 <ul class="list-group list-group-flush indicator-list">
-                                    <li class="list-group-item">📅 Günlər <span>150</span></li>
-                                    <li class="list-group-item">🛠️ Təmir <span>40</span></li>
-                                    <li class="list-group-item">⏳ Boşdayanma <span>20</span></li>
-                                    <li class="list-group-item">📊 Kommersiya <span>50%</span></li>
-                                    <li class="list-group-item">⚙️ İstismar <span>57%</span></li>
-                                    <li class="list-group-item">⏱️ Liman <span>220 saat</span></li>
-                                    <li class="list-group-item">💰 Demerec <span>$360,000</span></li>
+
+                                    <li class="list-group-item d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="/images/calendar.png" width="20" height="20"
+                                                alt="">
+                                            <span>Cəmi təqvim günləri:</span>
+                                        </div>
+                                        <span class="fw-semibold">150</span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="/images/offhire.png" width="20" height="20" alt="">
+                                            <span>Cəmi təmir günləri:</span>
+                                        </div>
+                                        <span class="fw-semibold">40</span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="/images/calendar.png" width="20" height="20"
+                                                alt="">
+                                            <span>Cəmi boş dayanma günləri:</span>
+                                        </div>
+                                        <span class="fw-semibold">20</span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="/images/commercial.png" width="20" height="20"
+                                                alt="">
+                                            <span>Kommersiya Utilizasiyası:</span>
+                                        </div>
+                                        <span class="fw-semibold">50%</span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="/images/commercial.png" width="20" height="20"
+                                                alt="">
+                                            <span>İstismar Utilizasiyası:</span>
+                                        </div>
+                                        <span class="fw-semibold">57%</span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="/images/time.png" width="20" height="20"
+                                                alt="">
+                                            <span>Limanda gözləmə vaxtı:</span>
+                                        </div>
+                                        <span class="fw-semibold">220 saat</span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img src="/images/demurrage.png" width="20" height="20"
+                                                alt="">
+                                            <span>Cəmi demerec məbləği:</span>
+                                        </div>
+                                        <span class="fw-semibold">$360,000</span>
+                                    </li>
+
                                 </ul>
+
+
                             </div>
 
-                            <div class="col-12 col-lg-7">
-                                <h6 class="section-title mb-3">Gəlirlilik göstəriciləri</h6>
-                                <div class="chart-box">
-                                    <canvas id="spotChart"></canvas>
-                                </div>
+                            <div class="col-12 col-lg-7 chart-col">
+                                <h6 class="section-title mb-3"><img src="/images/commercial.png" width="20"
+                                        height="20" alt=""> Gəlirlilik göstəriciləri</h6>
+                                <div id="tankerSpot" class="chart-div chart-box"></div>
+
                             </div>
 
                         </div>
@@ -311,19 +478,16 @@
     </div>
 </div>
 
-
-
-<script src="https://echarts.apache.org/en/js/vendors/echarts/dist/echarts.min.js"></script>
+{{-- <script src="https://echarts.apache.org/en/js/vendors/echarts/dist/echarts.min.js"></script> --}}
 
 <script>
-    // import * as echarts from 'echarts/lib/echarts'
-    var dom = document.getElementById('chart-container2');
-    var myChart = echarts.init(dom);
+    // TIMECHARTER
+    var dom = document.getElementById('tankerTimeCharter');
+    var tankerTimeCharter = echarts.init(dom);
     var app = {};
 
-    var plan = 300;
-    var fakt = 300;
-    // var dif = plan - fakt;
+    var plan = 500;
+    var fakt = 400;
 
     var option;
     var data = [];
@@ -333,17 +497,15 @@
         value: plan,
         itemStyle: {
             color: 'orange'
-        } // Total - mavi
+        }
     }
 
     data[2] = {
         value: fakt,
         itemStyle: {
             color: 'blue'
-        } // Total - mavi
+        }
     }
-
-    console.log(data);
 
     if (plan - fakt > 0) {
         data[1] = {
@@ -356,6 +518,7 @@
     } else if (plan - fakt < 0) {
         data[1] = {
             value: fakt - plan,
+            // value: plan - fakt,
             itemStyle: {
                 color: "green"
             }
@@ -366,7 +529,7 @@
         data[2].itemStyle.color = "pink";
     }
 
-
+    console.log(data);
 
     option = {
         tooltip: {
@@ -375,33 +538,31 @@
                 type: 'shadow'
             },
             formatter: function(params) {
-                var tar = params[1];
-                return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+                return params[1].name;
             }
         },
         grid: {
-            left: '0%',
-            right: '0%',
-            bottom: '0%',
-            top: '0%',
+            top: 20,
+            left: 5,
+            right: 0,
+            bottom: 0,
             containLabel: true
         },
-        // grid: {
-        //     left: 0,
-        //     top: 0,
-        //     right: 0,
-        //     bottom: 0,
-        //     containLabel: true
-        // }
         xAxis: {
             type: 'category',
             splitLine: {
                 show: false
             },
-            data: ['Total', 'Rent', 'Utilities']
+            data: ['Plan', '', 'Fakt'],
+            axisLabel: {
+                color: 'white'
+            }
         },
         yAxis: {
-            type: 'value'
+            type: 'value',
+            axisLabel: {
+                color: 'white'
+            }
         },
         series: [{
                 name: 'Placeholder',
@@ -425,27 +586,158 @@
                 stack: 'Total',
                 label: {
                     show: true,
-                    position: 'inside'
+                    position: 'inside',
+                    formatter: function(params) {
+                        return '$' + params.value.toLocaleString();
+                    }
                 },
-                // data: [960, 60, 900]
                 data: data
             }
         ]
     };
 
     if (option && typeof option === 'object') {
-        myChart.setOption(option);
+        tankerTimeCharter.setOption(option);
     }
-
 
     var modalEl = document.getElementById('tanker_kommersiya');
 
     modalEl.addEventListener('shown.bs.modal', function() {
-        if (!myChart) {
-            myChart = echarts.init(document.getElementById('chart-container2'));
-            myChart.setOption(option);
+        if (!tankerTimeCharter) {
+            tankerTimeCharter = echarts.init(document.getElementById('tankerTimeCharter'));
+            tankerTimeCharter.setOption(option);
         } else {
-            myChart.resize();
+            tankerTimeCharter.resize();
+        }
+    });
+
+    //SPOT
+    var dom = document.getElementById('tankerSpot');
+    var tankerSpot = echarts.init(dom);
+    var app = {};
+
+    var plan = 300;
+    var fakt = 420;
+
+    var option;
+    var data = [];
+    var x;
+
+    data[0] = {
+        value: plan,
+        itemStyle: {
+            color: 'orange'
+        }
+    }
+
+    data[2] = {
+        value: fakt,
+        itemStyle: {
+            color: 'blue'
+        }
+    }
+
+    if (plan - fakt > 0) {
+        data[1] = {
+            value: plan - fakt,
+            itemStyle: {
+                color: "red"
+            }
+        }
+        x = fakt;
+    } else if (plan - fakt < 0) {
+        data[1] = {
+            value: fakt - plan,
+            // value: plan - fakt,
+            itemStyle: {
+                color: "green"
+            }
+        }
+        x = plan;
+    } else if (plan == fakt) {
+        data[0].itemStyle.color = "pink";
+        data[2].itemStyle.color = "pink";
+    }
+
+    console.log(data);
+
+    option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            },
+            formatter: function(params) {
+                return params[1].name;
+            }
+        },
+        grid: {
+            top: 20,
+            left: 5,
+            right: 0,
+            bottom: 0,
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            splitLine: {
+                show: false
+            },
+            data: ['Bazar Taym-Çarter qiyməti', '', 'Taym-Çarter ekvivalenti'],
+            axisLabel: {
+                color: 'white'
+            }
+        },
+        yAxis: {
+            type: 'value',
+            axisLabel: {
+                color: 'white'
+            }
+        },
+        series: [{
+                name: 'Placeholder',
+                type: 'bar',
+                stack: 'Total',
+                itemStyle: {
+                    borderColor: 'transparent',
+                    color: 'transparent'
+                },
+                emphasis: {
+                    itemStyle: {
+                        borderColor: 'transparent',
+                        color: 'transparent'
+                    }
+                },
+                data: [0, x, 0]
+            },
+            {
+                name: 'Life Cost',
+                type: 'bar',
+                stack: 'Total',
+                label: {
+                    show: true,
+                    position: 'inside',
+                    formatter: function(params) {
+                        return '$' + params.value.toLocaleString();
+                    }
+                },
+                data: data
+            }
+        ]
+    };
+
+    if (option && typeof option === 'object') {
+        tankerSpot.setOption(option);
+    }
+
+    var modalEl = document.getElementById('tanker_kommersiya');
+
+    modalEl.addEventListener('shown.bs.modal', function() {
+        if (!tankerSpot) {
+            tankerSpot = echarts.init(document.getElementById('tankerSpot'));
+            tankerSpot.setOption(option);
+        } else {
+            tankerSpot.resize();
         }
     });
 </script>
