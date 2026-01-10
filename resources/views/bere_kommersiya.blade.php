@@ -210,7 +210,7 @@
             <div class="modal-body">
 
                 <!-- TAYM CHARTER -->
-                <div class="card dashboard-card mb-4" data-bs-toggle="modal" data-bs-target="#bere_kommersiya">
+                <div class="card dashboard-card mb-4" data-bs-toggle="modal" data-bs-target="#bere_kommersiya_table">
                     <div class="card-header text-center fw-semibold text-white">
                         Taym Çarter
                     </div>
