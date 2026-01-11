@@ -9,7 +9,7 @@
          border-radius: 18px;
      }
 
-     .tankerTimeCharterTable thead th {
+     .quruyukTimeCharterTable thead th {
          background: #1f4f82;
          color: #fff;
          text-align: center;
@@ -19,7 +19,7 @@
          /* table-layout: fixed; */
      }
 
-     .tankerTimeCharterTable tbody td {
+     .quruyukTimeCharterTable tbody td {
          background: #0f253d;
          color: #fff;
          text-align: center;
@@ -27,7 +27,7 @@
          white-space: nowrap;
      }
 
-     .tankerTimeCharterTable tbody tr:hover td {
+     .quruyukTimeCharterTable tbody tr:hover td {
          background: #14345a;
      }
 
@@ -58,7 +58,7 @@
          background: #351368 !important;
      }
 
-     .tankerTimeCharterTable tfoot td {
+     .quruyukTimeCharterTable tfoot td {
          background: #111827;
          font-weight: bold;
          text-align: center;
@@ -74,7 +74,7 @@
          width: 100%;
      } */
 
-     .tankerTimeCharterTable th {
+     .quruyukTimeCharterTable th {
          padding: 4px 4px;
          /* DAR */
          font-size: 12px;
@@ -85,14 +85,14 @@
          text-align: center;
      }
 
-     .tankerTimeCharterTable {
+     .quruyukTimeCharterTable {
          table-layout: fixed !important;
          width: 100% !important;
          min-width: unset !important;
      }
 
-     .tankerTimeCharterTable th,
-     .tankerTimeCharterTable td {
+     .quruyukTimeCharterTable th,
+     .quruyukTimeCharterTable td {
          padding: 4px 3px !important;
          font-size: 12px;
          line-height: 1.1;
@@ -109,14 +109,14 @@
          min-width: 0 !important;
      }
 
-     .tankerTimeCharterModalHead {
+     .quruyukTimeCharterModalHead {
          display: flex;
          align-items: center;
          justify-content: center;
          position: relative;
      }
 
-     .tankerTimeCharterModalHead .btn-close {
+     .quruyukTimeCharterModalHead .btn-close {
          position: absolute;
          right: 1rem;
          top: 10px;
@@ -127,13 +127,13 @@
  {{-- <body class="d-flex justify-content-center  vh-100"> --}}
 
  <!-- MODAL -->
- <div class="modal fade" id="tanker_taymcarter" tabindex="-1">
+ <div class="modal fade" id="quruyuk_taymcarter" tabindex="-1">
      <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
          <div class="modal-content">
-             <div class="modal-header tankerTimeCharterModalHead">
+             <div class="modal-header quruyukTimeCharterModalHead">
                  <h5 class="modal-title"></h5>
                  <h3 class="fw-bold">
-                     Taym-Çarterdə işləyən Tankerlərin kommersiya göstəriciləri
+                     Taym-Çarterdə işləyən Quru yük gəmilərinin kommersiya göstəriciləri
                  </h3>
                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                      aria-label="Bağla"></button>
@@ -142,7 +142,7 @@
              <div class="modal-body">
 
                  <div class="table-responsive">
-                     <table class="table table-bordered fw-bold align-middle mb-0 tankerTimeCharterTable">
+                     <table class="table table-bordered fw-bold align-middle mb-0 quruyukTimeCharterTable">
 
                          <thead>
                              <tr>

@@ -9,7 +9,7 @@
          border-radius: 18px;
      }
 
-     .tankerTimeCharterTable thead th {
+     .xdndTimeCharterTable thead th {
          background: #1f4f82;
          color: #fff;
          text-align: center;
@@ -19,7 +19,7 @@
          /* table-layout: fixed; */
      }
 
-     .tankerTimeCharterTable tbody td {
+     .xdndTimeCharterTable tbody td {
          background: #0f253d;
          color: #fff;
          text-align: center;
@@ -27,7 +27,7 @@
          white-space: nowrap;
      }
 
-     .tankerTimeCharterTable tbody tr:hover td {
+     .xdndTimeCharterTable tbody tr:hover td {
          background: #14345a;
      }
 
@@ -58,7 +58,7 @@
          background: #351368 !important;
      }
 
-     .tankerTimeCharterTable tfoot td {
+     .xdndTimeCharterTable tfoot td {
          background: #111827;
          font-weight: bold;
          text-align: center;
@@ -74,7 +74,7 @@
          width: 100%;
      } */
 
-     .tankerTimeCharterTable th {
+     .xdndTimeCharterTable th {
          padding: 4px 4px;
          /* DAR */
          font-size: 12px;
@@ -85,14 +85,14 @@
          text-align: center;
      }
 
-     .tankerTimeCharterTable {
+     .xdndTimeCharterTable {
          table-layout: fixed !important;
          width: 100% !important;
          min-width: unset !important;
      }
 
-     .tankerTimeCharterTable th,
-     .tankerTimeCharterTable td {
+     .xdndTimeCharterTable th,
+     .xdndTimeCharterTable td {
          padding: 4px 3px !important;
          font-size: 12px;
          line-height: 1.1;
@@ -109,14 +109,14 @@
          min-width: 0 !important;
      }
 
-     .tankerTimeCharterModalHead {
+     .xdndTimeCharterModalHead {
          display: flex;
          align-items: center;
          justify-content: center;
          position: relative;
      }
 
-     .tankerTimeCharterModalHead .btn-close {
+     .xdndTimeCharterModalHead .btn-close {
          position: absolute;
          right: 1rem;
          top: 10px;
@@ -127,13 +127,13 @@
  {{-- <body class="d-flex justify-content-center  vh-100"> --}}
 
  <!-- MODAL -->
- <div class="modal fade" id="tanker_taymcarter" tabindex="-1">
+ <div class="modal fade" id="xdnd_taymcarter_table" tabindex="-1">
      <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
          <div class="modal-content">
-             <div class="modal-header tankerTimeCharterModalHead">
+             <div class="modal-header xdndTimeCharterModalHead">
                  <h5 class="modal-title"></h5>
                  <h3 class="fw-bold">
-                     Taym-Çarterdə işləyən Tankerlərin kommersiya göstəriciləri
+                     Taym-Çarterdə işləyən XDND gəmilərinin kommersiya göstəriciləri
                  </h3>
                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                      aria-label="Bağla"></button>
@@ -142,13 +142,14 @@
              <div class="modal-body">
 
                  <div class="table-responsive">
-                     <table class="table table-bordered fw-bold align-middle mb-0 tankerTimeCharterTable">
+                     <table class="table table-bordered fw-bold align-middle mb-0 xdndTimeCharterTable">
 
                          <thead>
                              <tr>
                                  <th>No</th>
                                  <th>Gəmi adı</th>
                                  <th>Gəminin tipi</th>
+                                 <th>Müştəri</th>
                                  <th>Təqvim,<br>gün</th>
                                  <th>Təmir,<br>gün</th>
                                  <th>Ehtiyat,<br>gün</th>
@@ -169,6 +170,7 @@
                                  <td>1</td>
                                  <td>Aitolos</td>
                                  <td>Aframax tipli tanker</td>
+                                 <td>Azneft İB</td>
                                  <td>7</td>
                                  <td>0</td>
                                  <td>0</td>
@@ -187,6 +189,7 @@
                                  <td>2</td>
                                  <td>Zaqatala</td>
                                  <td>13,000 tonluq tanker</td>
+                                 <td>Azneft İB</td>
                                  <td>7</td>
                                  <td>0</td>
                                  <td>0</td>
@@ -205,6 +208,7 @@
                                  <td>9</td>
                                  <td>Çalil Məmmədquluzadə</td>
                                  <td>8,000 tonluq tanker</td>
+                                 <td>Azneft İB</td>
                                  <td>7</td>
                                  <td>3</td>
                                  <td>0</td>

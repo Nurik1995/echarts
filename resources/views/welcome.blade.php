@@ -390,9 +390,16 @@
 
     @include('tanker_taymcarter')
     @include('tanker_spot')
-
     @include('tanker_kommersiya')
+    @include('quruyuk_taymcarter')
+    @include('quruyuk_spot')
+    @include('quruyuk_kommersiya')
     @include('bere_kommersiya')
+    @include('bere_kommersiya_table')
+    @include('xdnd_kommersiya')
+    @include('xdnd_taymcarter_table')
+    @include('aparat_kommersiya')
+    @include('aparat_taymcarter_table')
     {{-- @include('bar') --}}
 
 
@@ -587,7 +594,7 @@
             </div>
 
 
-            <div class="col-md-3">
+            <div class="col-md-3" data-bs-toggle="modal" data-bs-target="#quruyuk_kommersiya">
                 <div class="card p-3 mb-2 pt-1" style="background-color: #36454F;">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
@@ -752,8 +759,10 @@
 
             {{-- bere-son --}}
 
+            {{-- XDND --}}
             <div class="col-md-3 card-body" style="display: grid">
-                <div class="card p-3 mb-2" style="background-color: #36454F;">
+                <div class="card p-3 mb-2" style="background-color: #36454F;" data-bs-toggle="modal"
+                    data-bs-target="#xdnd_kommersiya">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
                             <img src="/images/ship.png" style="width: 25px;height: 25px;" alt="Cinque Terre"> <span
@@ -786,10 +795,11 @@
                     </table>
 
                 </div>
+                {{-- XDND son --}}
 
-
-
-                <div class="card p-3 mb-2 float-bottom" style="background-color: #36454F;">
+                {{-- Aparat --}}
+                <div class="card p-3 mb-2 float-bottom" style="background-color: #36454F;" data-bs-toggle="modal"
+                    data-bs-target="#aparat_kommersiya">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
                             <img src="/images/ship.png" style="width: 25px;height: 25px;" alt="Cinque Terre"> <span
@@ -821,6 +831,7 @@
                         </tbody>
                     </table>
                 </div>
+                {{-- Aparat son --}}
             </div>
 
 
