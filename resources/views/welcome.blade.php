@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Laravel</title>
-
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -381,12 +381,22 @@
                 color: rgb(107 114 128 / var(--tw-text-opacity))
             }
         }
+
+        .datepicker {
+            z-index: 9999 !important;
+        }
     </style>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
     <script src="https://echarts.apache.org/en/js/vendors/echarts/dist/echarts.min.js"></script>
+    {{-- <link href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel="stylesheet"> --}}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" --}}
+    {{-- rel="stylesheet"> --}}
+
 
     @include('tanker_taymcarter')
     @include('tanker_spot')
@@ -498,17 +508,99 @@
     </style>
 </head>
 
+{{-- <script>
+    $(document).ready(function() {
+
+        $.fn.datepicker.dates['az'] = {
+            months: ["Yanvar", "Fevral", "Mart", "Aprel", "May", "İyun", "İyul", "Avqust", "Sentyabr",
+                "Oktyabr", "Noyabr", "Dekabr"
+            ],
+            monthsShort: ["Yan", "Fev", "Mar", "Apr", "May", "İyn", "İyl", "Avq", "Sen", "Okt", "Noy",
+                "Dek"
+            ],
+            today: "Bu gün",
+            clear: "Təmizlə",
+            format: "mm/yyyy"
+        };
+
+        $('#monthPicker').datepicker({
+            language: 'az',
+            format: 'mm/yyyy',
+            startView: 1, // 🔥 AY GÖRÜNÜR
+            minViewMode: 1, // 🔥 GÜN YOX
+            autoclose: true,
+            orientation: 'bottom'
+        });
+
+    });
+
+
+</script> --}}
+
+<script>
+    $(document).ready(function() {
+
+        $('#start').on('change', function() {
+            let selectedMonth = $(this).val(); // format: YYYY-MM
+
+            console.log('Seçilən ay:', selectedMonth);
+
+            // Məsələn: AJAX, chart refresh, table filter
+            // loadData(selectedMonth);
+        });
+
+    });
+</script>
+
+
 <body class="antialiased">
 
 
+
     <div class="container mt-3 mb-3">
+
+
+        {{-- <div style="max-width:130px">
+            <input type="text" id="monthPicker" class="form-control form-control-sm text-center"
+                placeholder="11/2025" readonly>
+        </div> --}}
+
+        {{-- <label for="start" style="color: black !important">Ay:</label>
+        <input type="month" id="start" name="start" min="2018-03" value="2018-05" /> --}}
+
+        <div class="d-flex justify-content-end align-items-center gap-2">
+            <label for="start" class="mb-0" style="color:black">Ay:</label>
+            <input type="month" id="start" name="start" class="form-control form-control-sm"
+                style="max-width:160px" min="2018-03" value="2018-05">
+        </div>
+
+
+        {{-- <div class="container shadow min-vh-100 py-2"> --}}
+        {{-- <h5>Bootstrap 5 date picker</h5>
+        <div class="row">
+            <div class="col-sm-6">
+
+            </div>
+            <div class="col-lg-3 col-sm-3">
+                <label for="startDate">Start</label>
+                <input id="startDate" class="form-control" type="date" />
+                <span id="startDateSelected"></span>
+            </div>
+            <div class="col-lg-3 col-sm-3">
+                <label for="endDate">End</label>
+                <input id="endDate" class="form-control" type="date" />
+                <span id="endDateSelected"></span>
+            </div>
+        </div> --}}
+        {{-- </div> --}}
+
         <div class="row">
             <div class="col-md-3 tanker " data-bs-toggle="modal" data-bs-target="#tanker_kommersiya">
                 <div class="card p-3 mb-2 pt-1" style="background-color: #36454F;">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
                             <img src="/images/ship.png" style="width: 25px;height: 25px;" alt="Cinque Terre"> <span
-                                class="text-light"> Tanker</span>
+                                class="text-light"> Tanker </span>
 
                         </div>
                     </div>
@@ -517,7 +609,9 @@
                         style="background-color: black;width: auto;height: 25px;color: white;font-weight: bold; ">
                         <span style="font-size: 11px;">Taym Çarter</span>
                     </div>
-
+                    {{-- @foreach ($val as $v)
+                        {{ $v['ttc_calendar_day'] }}
+                    @endforeach --}}
 
                     <table class="table table-borderless shipTable" style="line-height: 0.5">
                         <tbody>
@@ -526,7 +620,8 @@
                                 <td style="text-align: center;">
                                     <div class="container ">
                                         <div class="progress" style="border-radius: 2px">
-                                            <div class="progress-bar" style="width:71%">71%</div>
+                                            <div class="progress-bar" style="width:71%">
+                                                {{ $tankerTime[0]['tanker_time_commercial_utility_sum'] }}%</div>
                                         </div>
 
                                         {{-- <div class="progress custom-progress">
@@ -540,11 +635,18 @@
                             </tr>
                             <tr>
                                 <td>Faktiki Gəlir</td>
-                                <td style="text-align: center;">$900,000</td>
+                                <td style="text-align: center;">${{ $tankerTime[0]['tanker_time_income_fact_sum'] }}
+                                </td>
                             </tr>
                             <tr>
                                 <td style="font-weight: bold">Plan ilə fərq</td>
-                                <td style="text-align: center;color: red;font-weight: bold;">-$60,000</td>
+                                @if ($tankerTime[0]['tanker_time_income_difference'] < 0)
+                                    <td style="text-align: center;color: red;font-weight: bold;">
+                                        ${{ $tankerTime[0]['tanker_time_income_difference'] }}</td>
+                                @else
+                                    <td style="text-align: center;color: green;font-weight: bold;">
+                                        ${{ $tankerTime[0]['tanker_time_income_difference'] }}</td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>
@@ -565,7 +667,8 @@
                                 <td style="text-align: center;">
                                     <div class="container ">
                                         <div class="progress" style="border-radius: 2px">
-                                            <div class="progress-bar" style="width:50%">50%</div>
+                                            <div class="progress-bar" style="width:50%">
+                                                {{ $tankerSpot[0]['tanker_spot_commercial_utility_sum'] }}%</div>
                                         </div>
                                     </div>
                                 </td>
@@ -575,18 +678,26 @@
                                 <td style="text-align: center;">
                                     <div class="container ">
                                         <div class="progress" style="border-radius: 2px">
-                                            <div class="progress-bar" style="width:57%">57%</div>
+                                            <div class="progress-bar" style="width:57%">
+                                                {{ $tankerSpot[0]['tanker_spot_operation_utility_sum'] }}%</div>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>TC ekvivalenti</td>
-                                <td style="text-align: center;">$35,000</td>
+                                <td style="text-align: center;">${{ $tankerSpot[0]['tanker_spot_equality_price_sum'] }}
+                                </td>
                             </tr>
                             <tr>
                                 <td style="font-weight: bold">Bazar TC tarifi ilə fərq</td>
-                                <td style="text-align: center;color: rgb(68, 172, 68);font-weight: bold;">+$5,000</td>
+                                @if ($tankerSpot[0]['tanker_spot_equality_difference'] < 0)
+                                    <td style="text-align: center;color: red);font-weight: bold;">
+                                        ${{ $tankerSpot[0]['tanker_spot_equality_difference'] }}</td>
+                                @else
+                                    <td style="text-align: center;color: rgb(68, 172, 68);font-weight: bold;">
+                                        ${{ $tankerSpot[0]['tanker_spot_equality_difference'] }}</td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>
@@ -617,18 +728,26 @@
                                 <td style="text-align: center;">
                                     <div class="container ">
                                         <div class="progress" style="border-radius: 2px">
-                                            <div class="progress-bar" style="width:71%">71%</div>
+                                            <div class="progress-bar" style="width:71%">
+                                                {{ $dryCargoTime[0]['dry_cargo_time_commercial_utility_sum'] }}%</div>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Faktiki Gəlir</td>
-                                <td style="text-align: center;">$900,000</td>
+                                <td style="text-align: center;">
+                                    ${{ $dryCargoTime[0]['dry_cargo_time_income_fact_sum'] }}</td>
                             </tr>
                             <tr>
                                 <td style="font-weight: bold">Plan ilə fərq</td>
-                                <td style="text-align: center;color: red;font-weight: bold;">-$60,000</td>
+                                @if ($dryCargoTime[0]['dry_cargo_time_income_difference'] < 0)
+                                    <td style="text-align: center;color: red;font-weight: bold;">
+                                        ${{ $dryCargoTime[0]['dry_cargo_time_income_difference'] }}</td>
+                                @else
+                                    <td style="text-align: center;color: green;font-weight: bold;">
+                                        ${{ $dryCargoTime[0]['dry_cargo_time_income_difference'] }}</td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>
@@ -697,6 +816,17 @@
 
                     <table class="table table-borderless shipTable" style="line-height: 0.5">
                         <tbody>
+                            <tr>
+                                <td>Kommersiya Utilizasiyası</td>
+                                <td style="text-align: center;">
+                                    <div class="container ">
+                                        <div class="progress" style="border-radius: 2px">
+                                            <div class="progress-bar" style="width:50%">
+                                                {{ $tankerSpot[0]['tanker_spot_commercial_utility_sum'] }}%</div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
                             <tr>
                                 <td><img src="/images/vaqon.png" style="width: 17px;height: 17px;"
                                         alt="Cinque Terre"> Daşınan vaqon sayı: 245 ədəd</td>
@@ -778,18 +908,25 @@
                                 <td style="text-align: center;">
                                     <div class="container ">
                                         <div class="progress" style="border-radius: 2px">
-                                            <div class="progress-bar" style="width:90%">90%</div>
+                                            <div class="progress-bar" style="width:90%">
+                                                {{ $xdndTime[0]['xdnd_time_commercial_utility_sum'] }}%</div>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Faktiki Gəlir</td>
-                                <td style="text-align: center;">$900,000</td>
+                                <td style="text-align: center;">${{ $xdndTime[0]['xdnd_time_income_fact_sum'] }}</td>
                             </tr>
                             <tr>
                                 <td style="font-weight: bold">Plan ilə fərq</td>
-                                <td style="text-align: center;color: red;font-weight: bold;">-$60,000</td>
+                                @if ($xdndTime[0]['xdnd_time_income_difference'] < 0)
+                                    <td style="text-align: center;color: red;font-weight: bold;">
+                                        ${{ $xdndTime[0]['xdnd_time_income_difference'] }}</td>
+                                @else
+                                    <td style="text-align: center;color: green;font-weight: bold;">
+                                        ${{ $xdndTime[0]['xdnd_time_income_difference'] }}</td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>
@@ -815,18 +952,25 @@
                                 <td style="text-align: center;">
                                     <div class="container ">
                                         <div class="progress" style="border-radius: 2px">
-                                            <div class="progress-bar" style="width:90%">90%</div>
+                                            <div class="progress-bar" style="width:90%">
+                                                {{ $ascoTime[0]['asco_time_commercial_utility_sum'] }}%</div>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Faktiki Gəlir</td>
-                                <td style="text-align: center;">$900,000</td>
+                                <td style="text-align: center;">${{ $ascoTime[0]['asco_time_income_fact_sum'] }}</td>
                             </tr>
                             <tr>
                                 <td style="font-weight: bold">Plan ilə fərq</td>
-                                <td style="text-align: center;color: red;font-weight: bold;">-$60,000</td>
+                                @if ($ascoTime[0]['asco_time_income_difference'] < 0)
+                                    <td style="text-align: center;color: red;font-weight: bold;">
+                                        ${{ $ascoTime[0]['asco_time_income_difference'] }}</td>
+                                @else
+                                    <td style="text-align: center;color: green;font-weight: bold;">
+                                        ${{ $ascoTime[0]['asco_time_income_difference'] }}</td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>
@@ -838,6 +982,24 @@
 
         </div>
     </div>
+
+
+
+
+    {{-- <script>
+        let startDate = document.getElementById('startDate')
+        let endDate = document.getElementById('endDate')
+
+        startDate.addEventListener('change', (e) => {
+            let startDateVal = e.target.value
+            document.getElementById('startDateSelected').innerText = startDateVal
+        })
+
+        endDate.addEventListener('change', (e) => {
+            let endDateVal = e.target.value
+            document.getElementById('endDateSelected').innerText = endDateVal
+        })
+    </script> --}}
 
     {{-- <script src="https://echarts.apache.org/en/js/vendors/echarts/dist/echarts.min.js"></script> --}}
 </body>
